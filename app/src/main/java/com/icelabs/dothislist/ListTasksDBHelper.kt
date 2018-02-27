@@ -5,20 +5,16 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
 
-/**
- * Created by iulian.cordobin on 2/14/2018.
- */
-
-private const val SQL_CREATE_ENTRIES =
-        "CREATE TABLE ${ListTasksSQL.Tasks.TABLE_NAME} (" +
-                "${BaseColumns._ID} INTEGER PRIMARY KEY," +
-                "${ListTasksSQL.Tasks.COLUMN_NAME_TEXT} TEXT," +
-                "${ListTasksSQL.Tasks.COLUMN_NAME_DATE} TEXT," +
-                "${ListTasksSQL.Tasks.COLUMN_NAME_COMPLETE} TEXT)"
-
-private const val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS ${ListTasksSQL.Tasks.TABLE_NAME}"
-
 class ListTasksDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+
+    private val SQL_CREATE_ENTRIES =
+            "CREATE TABLE ${ListTasksSQL.Tasks.TABLE_NAME} (" +
+                    "${BaseColumns._ID} INTEGER PRIMARY KEY," +
+                    "${ListTasksSQL.Tasks.COLUMN_NAME_TEXT} TEXT," +
+                    "${ListTasksSQL.Tasks.COLUMN_NAME_DATE} TEXT," +
+                    "${ListTasksSQL.Tasks.COLUMN_NAME_COMPLETE} TEXT)"
+
+    private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS ${ListTasksSQL.Tasks.TABLE_NAME}"
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(SQL_CREATE_ENTRIES)

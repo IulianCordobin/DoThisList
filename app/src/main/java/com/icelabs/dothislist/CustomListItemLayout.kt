@@ -6,10 +6,6 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.Checkable
 
-/**
- * Created by iulian.cordobin on 1/29/2018.
- */
-
 class CustomListItemLayout(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs), Checkable {
 
     private var itemChecked = false
@@ -37,6 +33,11 @@ class CustomListItemLayout(context: Context, attrs: AttributeSet) : LinearLayout
         }
 
         return drawableState
+    }
+
+    override fun performClick(): Boolean {
+        toggle()
+        return super.performClick()
     }
 
     companion object {
